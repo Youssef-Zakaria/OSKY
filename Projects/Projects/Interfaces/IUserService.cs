@@ -7,7 +7,7 @@ namespace Projects.Interfaces
 {
     interface IUserService
     {
-        bool Login();
+        bool Login(String login, String password);
         void Logout();
 
         User getCurrentuser();

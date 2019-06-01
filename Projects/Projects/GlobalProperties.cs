@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace Projects
 {
-    public class GlobalProperties
+    public static class GlobalProperties
     {
-        public String Login
+        public static String Login
         {
             get => App.Current.Properties["Login"].ToString();
             set
@@ -17,7 +17,7 @@ namespace Projects
         }
 
 
-        public String Password
+        public static String Password
         {
             get => App.Current.Properties["Password"].ToString();
             set
@@ -25,5 +25,16 @@ namespace Projects
                 App.Current.Properties["Password"] = value;
             }
         }
+
+        public static void Logout() {
+            App.Current.Properties.Clear();            
+        }
+
+        public static bool isLoggedIn()
+        {
+            return App.Current.Properties.ContainsKey("Login") && App.Current.Properties.ContainsKey("Password");
+        }
+
+
     }
 }
