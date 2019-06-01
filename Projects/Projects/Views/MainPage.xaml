@@ -6,7 +6,6 @@
 
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
         <Button Text="Press Here" VerticalOptions="Center" HorizontalOptions="Center" Command="{Binding NavigateCommand}" />
-        
     </StackLayout>
 
 </ContentPage>

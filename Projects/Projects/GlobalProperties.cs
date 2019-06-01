@@ -13,6 +13,7 @@ namespace Projects
             set
             {
                 App.Current.Properties["Login"] = value;
+                App.Current.SavePropertiesAsync();
             }
         }
 
@@ -23,11 +24,12 @@ namespace Projects
             set
             {
                 App.Current.Properties["Password"] = value;
+                App.Current.SavePropertiesAsync();
             }
         }
 
         public static void Logout() {
-            App.Current.Properties.Clear();            
+            App.Current.Properties.Keys.Clear();            
         }
 
         public static bool isLoggedIn()

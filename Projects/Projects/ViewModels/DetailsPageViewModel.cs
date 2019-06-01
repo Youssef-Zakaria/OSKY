@@ -11,14 +11,14 @@ namespace Projects.ViewModels
 {
 	public class DetailsPageViewModel : BindableBase
 	{
-        public ObservableCollection<Project> Projects { get; set; }
+        public ObservableCollection<ProjectListing> Projects { get; set; }
 
         IProjectService ProjectService;
 
         public DetailsPageViewModel(IProjectService projectService)
         {
             ProjectService = projectService;
-            Projects = new ObservableCollection<Project>(ProjectService.GetProjects());
+            Projects = new ObservableCollection<ProjectListing>(ProjectService.GetProjectListings());
         }
 	}
 }

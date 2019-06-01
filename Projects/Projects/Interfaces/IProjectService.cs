@@ -7,6 +7,7 @@ namespace Projects.Interfaces
 {
     public interface IProjectService
     {
-        List<Project> GetProjects();
+        List<ProjectListing> GetProjectListings();
+        Project GetProject(int id);
     }
 }
