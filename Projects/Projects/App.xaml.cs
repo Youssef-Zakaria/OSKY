@@ -33,8 +33,12 @@ namespace Projects
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<DetailsPage, DetailsPageViewModel>();
-            containerRegistry.Register<IProjectService,ProjectService>();
             containerRegistry.RegisterForNavigation<ContactUs, ContactUsViewModel>();
+            containerRegistry.Register<IProjectService,ProjectService>();
+            containerRegistry.Register<IContactDetailService,ContactDetailsService>();
+            containerRegistry.Register<IEmailService,EmailService>();
+            containerRegistry.Register<IDialService,DialService>();
+            containerRegistry.Register<ILocationService,LocationService>();
         }
     }
 }

@@ -2,9 +2,48 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="Projects.Views.ContactUs">
+             x:Class="Projects.Views.ContactUs"
+             Title="{Binding Title}"
+             >
 
-    <Switch HorizontalOptions="Center" VerticalOptions="Center"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <maps:Map x:Name="LocationMap" Grid.ColumnSpan="2"/>
+
+
+        <Label FontSize="20" Margin="5,0,0,0" Text="{Binding Path=Location.CountryName, StringFormat='Country : {0}'}" Grid.Row="1" TextColor="Blue" Grid.ColumnSpan="2"/>
+        <Label FontSize="20" Margin="5,0,0,0" Text="{Binding Path=Location.AdminArea, StringFormat='Governorate : {0}'}" Grid.Row="2" TextColor="Blue" Grid.ColumnSpan="2"/>
+
+
+        <Label FontSize="20" Margin="5,0,0,0" Text="{Binding Path=Contact.Email, StringFormat='Email : {0}'}" Grid.Row="3" TextColor="Black" VerticalTextAlignment="Center"/>
+        <Button Text="Email" Command="{Binding EmailCommand}" Grid.Row="3" Grid.Column="1"/>
+
+        <Label FontSize="20" Margin="5,0,0,0" Text="{Binding Path=Contact.MobileNo, StringFormat='Phone : {0}'}" Grid.Row="4" TextColor="Black" VerticalTextAlignment="Center"/>
+        <Button Text="Call" Command="{Binding DialCommand}" Grid.Row="4" Grid.Column="1"/>
+
+
+        <Label FontSize="20" Margin="5,0,0,0" Text="Ask a question" Grid.Row="5" TextColor="Black" VerticalTextAlignment="Center"/>
+        <Button Text="Send" Command="{Binding QuestionCommand}" Grid.Row="6" Grid.Column="1"/>
+
+        <Entry  Grid.Row="6" Text="{Binding Question}"/>
+
+    </Grid>
 
 </ContentPage>
