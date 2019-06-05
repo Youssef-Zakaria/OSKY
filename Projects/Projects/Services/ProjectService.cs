@@ -50,7 +50,9 @@ namespace Projects.Services
 
         public List<ProjectListing> GetProjectListings()
         {
-            return _projects.Select(proj => new ProjectListing() { ID = proj.ID , Logo = proj.Logo, ProjectDetails = proj.ProjectDetails , ProjectName = proj.ProjectName  }).ToList();
+            //increase the attributes
+            return _projects.Select(proj => new ProjectListing() { ID = proj.ID , Logo = proj.Logo, ProjectDetails = proj.ProjectDetails , ProjectName = proj.ProjectName, StartDate="Start Date is "+proj.StartDate.ToString("MMM dd yyyy")
+                                                                   ,EndDate="End Date is "+proj.EndDate.ToString("MMM dd yyyy"),Location=proj.Location}).ToList();
         }
     }
 }

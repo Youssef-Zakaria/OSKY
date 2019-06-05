@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             x:Class="Projects.Views.ProjectsList">
+
+    <StackLayout Padding="10,0,10,0">
+        <Grid HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand">
+            <!--background for searchBox-->
+            <Image x:Name="imgbg"
+                   Source="https://wallpaperplay.com/walls/full/4/b/5/324706.jpg"
+                   Aspect="AspectFit" />
+            <!--Search Box-->
+            <SearchBar TextChanged="Search"
+                       TextColor="White"
+                       CancelButtonColor="White"
+                       PlaceholderColor="White"
+                       Placeholder="Search by name"></SearchBar>
+
+        </Grid >
+        <ListView  ItemsSource="{Binding ProjectsList}"
+                   ItemTapped="lvItemTapped"
+                   IsPullToRefreshEnabled="True"
+                   x:Name="ProjectListView"
+                   HasUnevenRows="true"
+                   SeparatorVisibility="Default">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding Logo}"
+                                   HeightRequest="50"
+                                   WidthRequest="50" />
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <Label Text="{Binding ProjectName}"
+                                       FontAttributes="Bold"
+                                       TextColor="#77d065" />
+                                <!--Divider-->
+                                <BoxView HeightRequest="1"
+                                         WidthRequest="200"
+                                         Color="#5b5d68"></BoxView>
+                                <Label Text="{Binding ProjectDetails}"
+                                       TextColor="Gray" />
+                                <Label Text="{Binding StartDate}"
+                                       TextColor="Gray" />
+                                <Label Text="{Binding EndDate}"
+                                       TextColor="Gray" />
+                                <Label Text="{Binding Location}"
+                                       TextColor="Gray" />
+
+                                <Label Text="{Binding ID}"
+                                       IsVisible="False" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>
