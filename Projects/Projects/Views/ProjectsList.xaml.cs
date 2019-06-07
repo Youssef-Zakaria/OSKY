@@ -1,4 +1,5 @@
-﻿using Projects.Models;
+﻿using Prism.Navigation;
+using Projects.Models;
 using Projects.Services;
 using Projects.ViewModels;
 using System.Collections.ObjectModel;
@@ -10,10 +11,12 @@ namespace Projects.Views
 {
     public partial class ProjectsList : ContentPage
     {
+
         public ProjectsList()
         {
             InitializeComponent();
-            BindingContext = new ProjectsListViewModel();
+            //BindingContext = new ProjectsListViewModel();
+
         }
 
 
@@ -32,7 +35,7 @@ namespace Projects.Views
             else
                 //Comparing between the input and Projects Name Ignoring The case Sensitive
                 ProjectListView.ItemsSource = new ObservableCollection<ProjectListing>(_container.ProjectsList.Where(i => culture.CompareInfo.IndexOf(i.ProjectName, e.NewTextValue, CompareOptions.IgnoreCase) >= 0));
-            
+
             ProjectListView.EndRefresh();
         }
 
@@ -52,11 +55,14 @@ namespace Projects.Views
             imgbg.HeightRequest = 191.0;
         }
 
-        public async void lvItemTapped(object sender, ItemTappedEventArgs e) {
+        public async void lvItemTapped(object sender, ItemTappedEventArgs e)
+        {
             var myListView = (ListView)sender;
             var myItem = myListView.SelectedItem as ProjectListing;
-            await Navigation.PushModalAsync(new DetailsPage(/*myItem.ID*/) );
-            
+            //await Navigation.PushModalAsync(new DetailsPage(/*myItem.ID*/) );
+            (BindingContext as ProjectsListViewModel).NavigateToDeailsAsync(myItem.ID);
+
+
         }
     }
 }

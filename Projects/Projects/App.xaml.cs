@@ -25,7 +25,7 @@ namespace Projects
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/ProjectDetails");
+            await NavigationService.NavigateAsync("NavigationPage/ProjectsList");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
