@@ -43,12 +43,13 @@
             <Label Text="{Binding project.ProjectName, StringFormat='The Project Name is {0}' } "
                    FontSize="Medium"
                    TextColor="Black" />
+            <!--We used a library called Forms9Patch that allowed us to  use Html tags in Xamarin-->
             <Forms9Patch:Label x:Name="EmailLabel"
                                TextColor="Black"
                                 FontSize="Medium"
                                HtmlText="{Binding project.ProjectDetails, StringFormat='&lt;b&gt;&lt;i&gt;{0}&lt;/i&gt;&lt;/b&gt;' }" />
 
-            <Label Text="{Binding Sproject.tartDate , StringFormat='The Start Date is {0:dd MMMM yyyy}'}"
+            <Label Text="{Binding project.StartDate , StringFormat='The Start Date is {0:dd MMMM yyyy}'}"
                    FontSize="Medium"
                    TextColor="Black" />
             <Label Text="{Binding project.EndDate  , StringFormat='The End Date is {0:dd MMMM yyyy}'}"
