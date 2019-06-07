@@ -1,6 +1,7 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Projects.Interfaces;
 using Projects.Models;
 using Projects.Services;
 using System;
@@ -16,12 +17,12 @@ namespace Projects.ViewModels
     {
         protected INavigationService NavigationService { get; set; }
         public int projectID { get; set; }
+        IProjectService _ProjectService;
         public Project project { get; set; }
-        public ProjectService propServe { get; set; }
         public ICommand OnbtnClicked { get; set; }
-        public ProjectDetailsViewModel(INavigationService navigationService)
+        public ProjectDetailsViewModel(INavigationService navigationService , IProjectService ProjectService)
         {
-            propServe = new ProjectService();
+            _ProjectService = ProjectService;
             NavigationService = navigationService;
             OnbtnClicked = new DelegateCommand(onContactsCliked);
         }
@@ -41,7 +42,7 @@ namespace Projects.ViewModels
         public void OnNavigatedTo(INavigationParameters parameters)
         {
             projectID = parameters.GetValue<int>("ID");
-            project = this.propServe.GetProject(projectID);
+            project = this._ProjectService.GetProject(projectID);
         }
     }
 }
