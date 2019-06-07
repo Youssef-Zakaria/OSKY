@@ -1,4 +1,5 @@
-﻿using Projects.Models;
+﻿using Prism.Navigation;
+using Projects.Models;
 using Projects.Services;
 using Projects.ViewModels;
 using System.Collections.ObjectModel;
@@ -13,7 +14,7 @@ namespace Projects.Views
         public ProjectsList()
         {
             InitializeComponent();
-            BindingContext = new ProjectsListViewModel();
+           
         }
 
 
@@ -52,11 +53,11 @@ namespace Projects.Views
             imgbg.HeightRequest = 191.0;
         }
 
-        public async void lvItemTapped(object sender, ItemTappedEventArgs e) {
+        public void lvItemTapped(object sender, ItemTappedEventArgs e) {
             var myListView = (ListView)sender;
             var myItem = myListView.SelectedItem as ProjectListing;
-            await Navigation.PushModalAsync(new DetailsPage(/*myItem.ID*/) );
-            
+
+            ((ProjectsListViewModel)this.BindingContext).OpenDetails.Execute(myItem.ID);            
         }
     }
 }
