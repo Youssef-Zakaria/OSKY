@@ -19,6 +19,7 @@ namespace Projects.Droid
             Xamarin.FormsMaps.Init(this, bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            Forms9Patch.Droid.Settings.Initialize(this);
             Xamarin.Essentials.Platform.Init(this,bundle);
 
             LoadApplication(new App(new AndroidInitializer()));

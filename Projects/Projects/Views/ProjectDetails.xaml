@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customControls="clr-namespace:ABC.CustomControls;assembly=ABC"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:Forms9Patch="clr-namespace:Forms9Patch;assembly=Forms9Patch"
+             xmlns:customControls1="clr-namespace:Projects.CustomView"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Projects.Views.ProjectDetails"
+             Title="{Binding project.ProjectName}">
+
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="*" />
+            <RowDefinition  Height="*" />
+            <RowDefinition  Height="auto" />
+            <RowDefinition  Height="*" />
+            <RowDefinition  Height="*" />
+        </Grid.RowDefinitions>
+
+
+
+        <Image Source="{Binding  project.Logo}"
+               x:Name="prdImg"
+               Aspect="Fill"
+               Margin="20"
+               Grid.Row="0"
+               Grid.RowSpan="2" />
+
+        <StackLayout  Grid.Row="0"
+                      Grid.RowSpan="2"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center">
+            <ActivityIndicator IsVisible="{Binding Source={x:Reference prdImg}, Path=IsLoading}"
+                               IsRunning="{Binding Source={x:Reference prdImg}, Path=IsLoading}"
+                               WidthRequest="100"
+                               Color="Black"
+                               HeightRequest="100" />
+        </StackLayout>
+        <StackLayout Grid.Row="2"
+                     Margin="20">
+            <Label Text="{Binding project.ProjectName, StringFormat='The Project Name is {0}' } "
+                   FontSize="Medium"
+                   TextColor="Black" />
+            <Forms9Patch:Label x:Name="EmailLabel"
+                               TextColor="Black"
+                                FontSize="Medium"
+                               HtmlText="{Binding project.ProjectDetails, StringFormat='&lt;b&gt;&lt;i&gt;{0}&lt;/i&gt;&lt;/b&gt;' }" />
+
+            <Label Text="{Binding Sproject.tartDate , StringFormat='The Start Date is {0:dd MMMM yyyy}'}"
+                   FontSize="Medium"
+                   TextColor="Black" />
+            <Label Text="{Binding project.EndDate  , StringFormat='The End Date is {0:dd MMMM yyyy}'}"
+                   FontSize="Medium"
+                   TextColor="Black" />
+            <Label Text="{Binding project.Location , StringFormat='This Project will be held {0}' }"
+                   FontSize="Medium"
+                   TextColor="Black" />
+           
+            <BoxView HeightRequest="2"
+                     BackgroundColor="Black" />
+
+        </StackLayout>
+        <!-- I used a custom list to make it's orintaion horizontl because the built in list has only vertical orintaion-->
+        <ScrollView Orientation="Horizontal"
+                    Grid.Row="3">
+            <customControls1:HorizontalList ItemsSource="{Binding project.Images}">
+                <customControls1:HorizontalList.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Image Source="{Binding ImageURL}"
+                                   HeightRequest="75" />
+                            <Label Text="{Binding ImageDescription}" />
+                        </StackLayout>
+                    </DataTemplate>
+                </customControls1:HorizontalList.ItemTemplate>
+            </customControls1:HorizontalList>
+        </ScrollView>
+        <StackLayout Grid.Row="4"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center">
+            <Button  Text="Contact Us"
+                     BorderRadius="16"
+                     WidthRequest="220"
+                     Command="{Binding OnbtnClicked}" />
+        </StackLayout>
+
+
+
+    </Grid>
+</ContentPage>
