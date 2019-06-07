@@ -14,14 +14,16 @@ namespace Projects.ViewModels
 	public class ProjectDetailsViewModel : BindableBase,INavigatedAware
     {
         protected INavigationService NavigationService {get;  set;}
-        public int projectID { get; set; } = 2;
-        public Project project { get; set; }
+
+        Project _project;
+
+        public int projectID { get; set; } 
+        public Project project { get => _project; set { _project = value; RaisePropertyChanged(nameof(project)); } }
         public ProjectService propServe { get; set; }
         public ICommand OnbtnClicked { get; set; }
         public ProjectDetailsViewModel(INavigationService navigationService)
         {
             propServe = new ProjectService();
-            project = this.propServe.GetProject(projectID);
             NavigationService = navigationService;
             OnbtnClicked = new DelegateCommand(onContactsCliked);
             
@@ -43,7 +45,12 @@ namespace Projects.ViewModels
 
         public void OnNavigatedTo(INavigationParameters parameters)
         {
-            
+            if (parameters.ContainsKey(NavParameterKeys.ProjectID)) { 
+                this.projectID = (int)parameters[NavParameterKeys.ProjectID];
+                project = this.propServe.GetProject(projectID);
+            }
         }
+
+
     }
 }

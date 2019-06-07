@@ -13,8 +13,9 @@ namespace Projects.Views
     {
         public ProjectsList()
         {
+            
             InitializeComponent();
-           
+            
         }
 
 
@@ -56,7 +57,7 @@ namespace Projects.Views
         public void lvItemTapped(object sender, ItemTappedEventArgs e) {
             var myListView = (ListView)sender;
             var myItem = myListView.SelectedItem as ProjectListing;
-
+            
             ((ProjectsListViewModel)this.BindingContext).OpenDetails.Execute(myItem.ID);            
         }
     }
