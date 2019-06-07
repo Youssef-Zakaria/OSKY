@@ -13,6 +13,9 @@ namespace Projects.ViewModels
 {
     public class ProjectsListViewModel : BindableBase
     {
+
+
+
         public ObservableCollection<ProjectListing> ProjectsList { set; get; }
         public DelegateCommand<int?> OpenDetails {get; private set;}
 
