@@ -15,14 +15,14 @@
                    Source="https://wallpaperplay.com/walls/full/4/b/5/324706.jpg"
                    Aspect="AspectFit" />
             <!--Search Box-->
-            <SearchBar TextChanged="Search"
+            <SearchBar Text="{Binding Search}"
                        TextColor="White"
                        CancelButtonColor="White"
                        PlaceholderColor="White"
                        Placeholder="Search by name"></SearchBar>
 
         </Grid >
-        <ListView  ItemsSource="{Binding ProjectsList}"
+        <ListView  ItemsSource="{Binding ProjectsListTemp}"
                    ItemTapped="lvItemTapped"
                    IsPullToRefreshEnabled="True"
                    x:Name="ProjectListView"

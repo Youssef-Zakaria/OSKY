@@ -17,34 +17,7 @@ namespace Projects.Views
             InitializeComponent();
             
         }
-
-
-
-        CultureInfo culture = new CultureInfo("es-ES", false);
-
-
-        void Search(object sender, Xamarin.Forms.TextChangedEventArgs e)
-        {
-            var _container = BindingContext as ProjectsListViewModel;
-            ProjectListView.BeginRefresh();
-
-
-            if (string.IsNullOrWhiteSpace(e.NewTextValue))
-                ProjectListView.ItemsSource = _container.ProjectsList;
-            else
-                //Comparing between the input and Projects Name Ignoring The case Sensitive
-                ProjectListView.ItemsSource = new ObservableCollection<ProjectListing>(_container.ProjectsList.Where(i => culture.CompareInfo.IndexOf(i.ProjectName, e.NewTextValue, CompareOptions.IgnoreCase) >= 0));
-            
-            ProjectListView.EndRefresh();
-        }
-
-
-        void Handle_Clicked(object sender, System.EventArgs e)
-        {
-            var _container = BindingContext as ProjectsListViewModel;
-            //do work over here
-            DisplayAlert("Sucess", "You have Subscribed", "OK", "Cancel");
-        }
+        
 
         protected override void OnSizeAllocated(double width, double height)
         {
