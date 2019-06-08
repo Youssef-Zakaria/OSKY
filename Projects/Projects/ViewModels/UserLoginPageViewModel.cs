@@ -18,7 +18,6 @@ namespace Projects.ViewModels
         IPageDialogService DialogService;
 
         protected INavigationService NavigationService { get; set; }
-        private ObservableCollection<User> _user { set; get; }
         public ICommand OnLoginClicked { get; set; }
         public UserService userService { get; set; }
 

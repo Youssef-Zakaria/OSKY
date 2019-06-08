@@ -10,7 +10,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
 
-            <Color x:Key="LightGreenColor">Red</Color>
+            <Color x:Key="SteelBlueColor">SteelBlue</Color>
             <Color x:Key="BorderColor">#D8D8D8</Color>
 
             <Style x:Key="LableStyle"
@@ -41,48 +41,55 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <!--Common Styles Ends-->
-    <AbsoluteLayout>
+    <RelativeLayout>
         <Image Source="@drawable/LoginBG"
                Aspect="Fill"
-               AbsoluteLayout.LayoutBounds="0,0,1,0.5"
-               AbsoluteLayout.LayoutFlags="SizeProportional"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+            Property=Width,Factor=1}"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+            Property=Height,Factor=0.5}"
                Opacity="0.7">
         </Image>
 
-        
+
 
         <StackLayout Margin="20,0"
                      HorizontalOptions="CenterAndExpand"
                      VerticalOptions="CenterAndExpand"
-                     AbsoluteLayout.LayoutFlags="All"
-                     AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                     RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+            Property=X,Factor=0}"
+                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+            Property=Height,Factor=0.15}"
+                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+            Property=Width,Factor=1}"
                      x:Name="LoginForm">
-            
+
             <Frame HasShadow="False"
                    CornerRadius="5"
                    BorderColor="{StaticResource BorderColor}"
                    BackgroundColor="#F7F7F7">
                 <StackLayout>
-                    <Label TextColor="SteelBlue"
+                    <Label TextColor="{StaticResource SteelBlueColor}"
                            FontSize="40"
                            Text="Login"
                            HorizontalOptions="Center"
                            FontAttributes="Bold"
-                           Margin="0,0"/>
-                    
+                           Margin="0,0" />
 
-                    
+
+
                     <Frame Style="{StaticResource FrameStyle}"
                            Padding="5,10"
                            Margin="0,20">
-                        
+
                         <controls:CustomEntry x:Name="txtUserName"
                                               Placeholder="User NAme"
                                               PlaceholderColor="Gray"
                                               FontSize="18.0"
                                               TextColor="Black"
                                               Style="{StaticResource EntryStyle}"
-                                              Text="{Binding UserName}"></controls:CustomEntry>
+                                              Text="{Binding UserName}"
+                                              TextChanged="TxtUserName_TextChanged"></controls:CustomEntry>
                     </Frame>
 
                     <Frame Style="{StaticResource FrameStyle}"
@@ -95,13 +102,25 @@
                                               FontSize="18.0"
                                               TextColor="Black"
                                               Style="{StaticResource EntryStyle}"
-                                              Text="{Binding Password}"></controls:CustomEntry>
+                                              Text="{Binding Password}"
+                                              TextChanged="TxtPassword_TextChanged"></controls:CustomEntry>
                     </Frame>
+
+                    <Button x:Name="btnShowHide"
+                        HorizontalOptions="End"
+                            BorderColor="Transparent"
+                            BackgroundColor="Transparent"
+                            Margin="10,0"
+                            Text="Show Password"
+                            TextColor="Black"
+                            FontSize="10"
+                            Clicked="BtnShowHide_Clicked"></Button>
+
                     <StackLayout Orientation="Horizontal"
                                  VerticalOptions="Center"
                                  HorizontalOptions="Center">
                         <Switch HorizontalOptions="Center"
-                                OnColor="SteelBlue"
+                                OnColor="{StaticResource SteelBlueColor}"
                                 x:Name="RememberMe">
 
 
@@ -119,7 +138,7 @@
                             HorizontalOptions="Fill"
                             x:Name="Login"
                             TextColor="White"
-                            BackgroundColor="SteelBlue"
+                            BackgroundColor="{StaticResource SteelBlueColor}"
                             Text="Login"
                             Command="{Binding OnLoginClicked}"></Button>
                 </StackLayout>
@@ -128,10 +147,42 @@
 
 
         </StackLayout>
-        
-        
-        
 
-    </AbsoluteLayout>
+        <Frame x:Name="lblUserName"
+               BorderColor="Transparent"
+               BackgroundColor="#F7F7F7"
+               Padding="0,0"
+               RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,ElementName=LoginForm,
+            Property=Width,Factor=0.15}"
+               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,ElementName=LoginForm,
+            Property=Y,Factor=0.92,Constant=100}"
+               IsVisible="False">
+            <Label TextColor="{StaticResource SteelBlueColor}"
+                   FontSize="16"
+                   Text="User Name"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold" />
+        </Frame>
+
+        <Frame x:Name="lblPassword"
+               BackgroundColor="#F7F7F7"
+               BorderColor="Transparent"
+               Padding="0,0"
+               RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,ElementName=LoginForm,
+            Property=Width,Factor=0.15}"
+               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,ElementName=LoginForm,
+            Property=Y,Factor=0.92,Constant=185}"
+               IsVisible="False">
+            <Label TextColor="{StaticResource SteelBlueColor}"
+                   FontSize="16"
+                   Text="Password"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold" />
+        </Frame>
+
+
+
+
+    </RelativeLayout>
 
 </ContentPage>
