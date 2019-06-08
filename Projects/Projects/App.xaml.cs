@@ -25,7 +25,7 @@ namespace Projects
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/ProjectsList");
+            await NavigationService.NavigateAsync("NavigationPage/UserLoginPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -39,7 +39,8 @@ namespace Projects
             containerRegistry.Register<IEmailService,EmailService>();
             containerRegistry.Register<IDialService,DialService>();
             containerRegistry.Register<ILocationService,LocationService>();
-            
+
+            containerRegistry.RegisterForNavigation<UserLoginPage, UserLoginPageViewModel>();
         }
     }
 }

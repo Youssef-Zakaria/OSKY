@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:controls="clr-namespace:Projects.Views"
+             BackgroundColor="White"
+             x:Class="Projects.Views.UserLoginPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="LightGreenColor">Red</Color>
+            <Color x:Key="BorderColor">#D8D8D8</Color>
+
+            <Style x:Key="LableStyle"
+                   TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="#666666" />
+                <Setter Property="FontSize"
+                        Value="Large" />
+            </Style>
+            <Style x:Key="FrameStyle"
+                   TargetType="Frame">
+                <Setter Property="HasShadow"
+                        Value="False" />
+                <Setter Property="Padding"
+                        Value="0" />
+                <Setter Property="CornerRadius"
+                        Value="5" />
+                <Setter Property="BorderColor"
+                        Value="{StaticResource BorderColor}" />
+            </Style>
+            <Style x:Key="EntryStyle"
+                   TargetType="Entry">
+                <Setter Property="HeightRequest"
+                        Value="40"></Setter>
+                <Setter Property="Margin"
+                        Value="5,0,0,0"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <!--Common Styles Ends-->
+    <AbsoluteLayout>
+        <Image Source="@drawable/LoginBG"
+               Aspect="Fill"
+               AbsoluteLayout.LayoutBounds="0,0,1,0.5"
+               AbsoluteLayout.LayoutFlags="SizeProportional"
+               Opacity="0.7">
+        </Image>
+
+        
+
+        <StackLayout Margin="20,0"
+                     HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="CenterAndExpand"
+                     AbsoluteLayout.LayoutFlags="All"
+                     AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                     x:Name="LoginForm">
+            
+            <Frame HasShadow="False"
+                   CornerRadius="5"
+                   BorderColor="{StaticResource BorderColor}"
+                   BackgroundColor="#F7F7F7">
+                <StackLayout>
+                    <Label TextColor="SteelBlue"
+                           FontSize="40"
+                           Text="Login"
+                           HorizontalOptions="Center"
+                           FontAttributes="Bold"
+                           Margin="0,0"/>
+                    
+
+                    
+                    <Frame Style="{StaticResource FrameStyle}"
+                           Padding="5,10"
+                           Margin="0,20">
+                        
+                        <controls:CustomEntry x:Name="txtUserName"
+                                              Placeholder="User NAme"
+                                              PlaceholderColor="Gray"
+                                              FontSize="18.0"
+                                              TextColor="Black"
+                                              Style="{StaticResource EntryStyle}"
+                                              Text="{Binding UserName}"></controls:CustomEntry>
+                    </Frame>
+
+                    <Frame Style="{StaticResource FrameStyle}"
+                           Padding="5,10">
+
+                        <controls:CustomEntry IsPassword="True"
+                                              x:Name="txtPassword"
+                                              Placeholder="Password"
+                                              PlaceholderColor="Gray"
+                                              FontSize="18.0"
+                                              TextColor="Black"
+                                              Style="{StaticResource EntryStyle}"
+                                              Text="{Binding Password}"></controls:CustomEntry>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center">
+                        <Switch HorizontalOptions="Center"
+                                OnColor="SteelBlue"
+                                x:Name="RememberMe">
+
+
+                        </Switch>
+                        <Label TextColor="Black"
+                               FontSize="20"
+                               Text="Stay LoggedIn"
+                               VerticalOptions="Center" />
+
+                    </StackLayout>
+
+                    <Button Margin="0,30"
+                            BorderRadius="30"
+                            WidthRequest="1000"
+                            HorizontalOptions="Fill"
+                            x:Name="Login"
+                            TextColor="White"
+                            BackgroundColor="SteelBlue"
+                            Text="Login"
+                            Command="{Binding OnLoginClicked}"></Button>
+                </StackLayout>
+            </Frame>
+
+
+
+        </StackLayout>
+        
+        
+        
+
+    </AbsoluteLayout>
+
+</ContentPage>
