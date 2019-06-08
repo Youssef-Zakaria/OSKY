@@ -5,17 +5,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Fody" Version="4.2.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Forms9Patch" Version="1.6.4" />
+    <PackageReference Include="PropertyChanged.Fody" Version="2.6.1" />
     <PackageReference Include="Xamarin.Essentials" Version="1.0.0" />
     <PackageReference Include="Xamarin.Forms" Version="3.2.0.839982" />
     <PackageReference Include="Prism.Unity.Forms" Version="7.1.0.431" />
-    <PackageReference Include="XLabs.Forms" Version="2.0.5782" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="3.2.0.839982" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\DetailsPage.xaml">
+    <EmbeddedResource Update="Views\ContactUs.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LoginPage.xaml">
+    <EmbeddedResource Update="Views\ProjectDetails.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ProjectsList.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

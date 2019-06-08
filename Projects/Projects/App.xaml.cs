@@ -25,15 +25,21 @@ namespace Projects
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("NavigationPage/ProjectsList");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
-            containerRegistry.RegisterForNavigation<DetailsPage, DetailsPageViewModel>();
+            containerRegistry.RegisterForNavigation<ContactUs, ContactUsViewModel>();
+            containerRegistry.RegisterForNavigation<ProjectsList, ProjectsListViewModel>();
+            containerRegistry.RegisterForNavigation<ProjectDetails, ProjectDetailsViewModel>();
             containerRegistry.Register<IProjectService,ProjectService>();
+            containerRegistry.Register<IContactDetailService,ContactDetailsService>();
+            containerRegistry.Register<IEmailService,EmailService>();
+            containerRegistry.Register<IDialService,DialService>();
+            containerRegistry.Register<ILocationService,LocationService>();
+            
         }
     }
 }

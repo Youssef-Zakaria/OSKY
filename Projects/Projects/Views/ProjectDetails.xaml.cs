@@ -2,9 +2,9 @@
 
 namespace Projects.Views
 {
-    public partial class DetailsPage : ContentPage
+    public partial class ProjectDetails : ContentPage
     {
-        public DetailsPage()
+        public ProjectDetails()
         {
             InitializeComponent();
         }

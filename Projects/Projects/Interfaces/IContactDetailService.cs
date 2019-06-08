@@ -5,9 +5,8 @@ using System.Text;
 
 namespace Projects.Interfaces
 {
-    public interface IProjectService
+    public interface IContactDetailService
     {
-        List<ProjectListing> GetProjectListings();
-        Project GetProject(int id);
+        ContactDetails getDetails();
     }
 }
