@@ -7,6 +7,8 @@ namespace Projects.Models
 {
     public class Project: INotifyPropertyChanged//We used it to help when changing the project property in projectDetails page 
     {
+
+
         public int ID { get; set; }
         public String ProjectName { get; set; }
         public String ProjectDetails { get; set; }
