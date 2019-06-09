@@ -5,6 +5,7 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
+             BackgroundColor="White"
              x:Class="Projects.Views.ProjectsList">
 
     <StackLayout Padding="10,0,10,0">

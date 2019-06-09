@@ -83,7 +83,7 @@
                            Margin="0,20">
 
                         <controls:CustomEntry x:Name="txtUserName"
-                                              Placeholder="User NAme"
+                                              Placeholder="User Name"
                                               PlaceholderColor="Gray"
                                               FontSize="18.0"
                                               TextColor="Black"

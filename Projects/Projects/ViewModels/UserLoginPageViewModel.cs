@@ -65,7 +65,7 @@ namespace Projects.ViewModels
         private void Login_Clicked()
         {
             if (userService.Login(UserName, Password))
-                NavigationService.NavigateAsync("ProjectList");
+                NavigationService.NavigateAsync("ProjectsList");
             else
                 DialogService.DisplayAlertAsync("Alert", "User Name or Password might be incorrect !", "OK");
 

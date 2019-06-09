@@ -5,6 +5,7 @@
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Projects.Views.ContactUs"
+             BackgroundColor="White"
              Title="{Binding Title}"
              >
 

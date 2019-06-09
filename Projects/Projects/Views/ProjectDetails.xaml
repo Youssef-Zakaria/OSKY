@@ -5,6 +5,7 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:Forms9Patch="clr-namespace:Forms9Patch;assembly=Forms9Patch"
              xmlns:customControls1="clr-namespace:Projects.CustomView"
+             BackgroundColor="White"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Projects.Views.ProjectDetails"
              Title="{Binding project.ProjectName}">
